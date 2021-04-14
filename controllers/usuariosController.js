@@ -53,8 +53,14 @@ delete: async (req, res) => {
     // });
 
     return res.json(usuario);
-}
-
+    },
+// show: async (req, res) => {
+//     const { id } = req.body;
+//     const usuario = await Usuario.show ({
+//         where: { id }
+//     });
+// return res.json(usuario);
+// }
 }
 
 module.exports = usuariosController;

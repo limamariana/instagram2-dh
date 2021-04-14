@@ -65,8 +65,20 @@ const postsController = {
         //     }
         // });
         return res.json(post);
+    },
+   
+    show: async(req, res) => {
+        const { usuarios_id} = req.params; //filtrar a busca pelo id
+
+        const post = await Post.findAll({
+            where : 
+                { usuarios_id }
+        });
+
+        return res.json(post);  
     }
 
 }
 
 module.exports = postsController;
+
