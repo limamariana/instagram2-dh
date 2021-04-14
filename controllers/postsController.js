@@ -8,42 +8,62 @@ const postsController = {
     },
 
     create: async (req,res) => {
-        const {texto: _texto, img: _img, usuarios_id: _usuarios_id, n_likes: _n_likes} = req.body;
-
+       const { texto, img, usuarios_id, n_likes} = req.body;
+        // const {texto: _texto, img: _img, usuarios_id: _usuarios_id, n_likes: _n_likes} = req.body;
         const post = await Post.create({
-            texto: _texto,
-           img:_img,
-           usuarios_id: _usuarios_id,
-           n_likes: _n_likes 
+            texto,
+            img,
+            usuarios_id,
+            n_likes
         });
+        // const post = await Post.create({
+        //     texto: _texto,
+        //    img:_img,
+        //    usuarios_id: _usuarios_id,
+        //    n_likes: _n_likes 
+        // });
         return res.json(post);
     },
 
     update: async (req,res) => {
-        const {id: _id} = req.params;
-        const {texto: _texto, img:_img, usuarios_id:_usuarios_id, n_likes:_n_likes} = req.body;
-
+        const { id } = req.params;
+        const { texto, img, usuarios_id, n_likes } = req.body;
+        // const {id: _id} = req.params;
+        // const {texto: _texto, img:_img, usuarios_id:_usuarios_id, n_likes:_n_likes} = req.body;
         const post = await Post.update({
-            texto: _texto,
-            img: _img,
-            usuarios_id:_usuarios_id,
-            n_likes:_n_likes
+            texto,
+            img,
+            usuarios_id,
+            n_likes
         }, {
-            where: {
-                id:_id
-            }
+            where: { id }
         });
+        // const post = await Post.update({
+        //     texto: _texto,
+        //     img: _img,
+        //     usuarios_id:_usuarios_id,
+        //     n_likes:_n_likes
+        // }, {
+        //     where: {
+        //         id:_id
+        //     }
+        // });
         return res.json(post);
     },
 
     delete: async (req, res) => {
-        const {id: _id} = req.params;
-
-        const post = await Post.destroy({
-            where: {
-                id: _id
-            }
+        const { id } = req.params;
+        const post = await Post.destroy ({
+            where: { id }
         });
+        
+        // const {id: _id} = req.params;
+
+        // const post = await Post.destroy({
+        //     where: {
+        //         id: _id
+        //     }
+        // });
         return res.json(post);
     }
 
